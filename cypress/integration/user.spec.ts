@@ -17,7 +17,7 @@ describe("Todo fetching", () => {
 
 describe("Navigation", () => {
   it("should navigate to the home page", () => {
-    // Start from the index page
+    // Start from the user 1 page
     cy.visit("http://localhost:3000/user/1");
 
     // Find a link with an href attribute containing "/" and click it
