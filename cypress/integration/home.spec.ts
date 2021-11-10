@@ -15,4 +15,25 @@ describe("User fetching", () => {
   });
 });
 
+describe("Navigation", () => {
+  it("should navigate to a user's page", () => {
+    // Start from the index page
+    cy.visit("http://localhost:3000");
+
+    // Intercept the request
+    cy.intercept("https://jsonplaceholder.typicode.com/users", {
+      fixture: "users.json",
+    });
+
+    // Click on the link from one of the users
+    cy.get("a").contains("Leanne Graham").click();
+
+    // The new url should include "user"
+    cy.url().should("contain", "user");
+
+    // The new page should contain an a with "Back home"
+    cy.get("a").contains("Back home");
+  });
+});
+
 export {};
