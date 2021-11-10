@@ -2,6 +2,9 @@
 # Multi User Todo
 
 Esse é um projeto criado para a avaliação técnica de Igor Bedesqui.
+## Demo
+Você pode acessar uma demo do projeto em https://multi-user-todo.vercel.app
+
 ## Rode_localmente
 
 Certifique-se de ter uma versão LTS de NodeJS instalada. 
@@ -79,6 +82,7 @@ Executa os testes no console e cria replays da navegação.
 - TailwindCSS
 - RadixUI colors
 - SWR
+- Cypress
 ## Desenvolvimento
 Durante o desenvolvimento criei um roadmap simplificado listando todas as features que necessárias e descrevendo-as. Além disso, usei conventional commits para o versionamento do projeto. Caso queira checar meu roadmap, veja os commits, eles são um reflexo quase perfeito do que havia planejado.
 ## O Desafio
