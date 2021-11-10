@@ -83,6 +83,7 @@ export default function Home() {
           </Link>
         </nav>
       </header>
+      {error && <div>The api threw this error: {error}</div>}
       <main className="p-4 md:p-8 max-w-2xl mx-auto">
         <ul className="">
           {todos &&
