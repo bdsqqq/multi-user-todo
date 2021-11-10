@@ -10,7 +10,7 @@ const TodoItem = ({ todo }: { todo: todoInterface }) => {
   };
 
   return (
-    <div className="flex items-center gap-2 px-2 hover:bg-mauve4 focus-within:bg-mauve5 transition-colors">
+    <div className="flex items-center gap-2 px-2 hover:bg-mauve4 transition-colors">
       <Checkbox
         className={`w-5 h-5 rounded-sm border text-crimson1 transition-colors
         ${
@@ -24,7 +24,10 @@ const TodoItem = ({ todo }: { todo: todoInterface }) => {
           <CheckboxSvg />
         </CheckboxIndicator>
       </Checkbox>
-      <label className="w-full h-full py-3" htmlFor={`todo-${todo.id}`}>
+      <label
+        className="w-full h-full py-3 cursor-pointer"
+        htmlFor={`todo-${todo.id}`}
+      >
         {todo.title}
       </label>
     </div>
