@@ -4,6 +4,8 @@ import { fetcher } from "@/lib/fetcher";
 import Head from "next/head";
 import Link from "next/link";
 import { useRouter } from "next/router";
+
+import { TodoItem } from "@/components/todoItem";
 import { todo as todoInterface } from "@/lib/types";
 
 export default function Home() {
@@ -41,7 +43,8 @@ export default function Home() {
       </header>
       <main>
         <ul>
-          {todos && todos.map((todo, i) => <li key={todo.id}>{todo.title}</li>)}
+          {todos &&
+            todos.map((todo, i) => <TodoItem key={todo.id} todo={todo} />)}
         </ul>
       </main>
     </>
