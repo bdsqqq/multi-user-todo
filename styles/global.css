@@ -6,4 +6,9 @@
   *:focus {
     @apply outline-none ring-2 ring-crimson10 ring-offset-1 ring-offset-mauve1;
   }
+
+    /* this takes out the focus on click if a browser supports focus-visible. See: https://css-tricks.com/the-focus-visible-trick/ */
+  *:focus:not(:focus-visible) {
+    @apply outline-none ring-0 ring-offset-0;
+  }
 }
