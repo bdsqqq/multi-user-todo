@@ -1,5 +1,21 @@
 /// <reference types="cypress" />
 
+describe("Add todo", () => {
+  it("should add a todo after filling and sending the form", () => {
+    // Start from the user 1 page
+    cy.visit("http://localhost:3000/user/1");
+
+    // find the input and type "Hello, world"
+    cy.get("#todoInput").type("Hello, world");
+
+    // find the submit button and click it
+    cy.get("button").contains("Add").click();
+
+    // the page should contain a label with "Hello, world"
+    cy.get("label").contains("Hello, world");
+  });
+});
+
 describe("Todo fetching", () => {
   it("should display fetched todos", () => {
     // Start from the user 1 page
