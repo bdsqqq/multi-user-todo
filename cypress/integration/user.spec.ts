@@ -10,8 +10,10 @@ describe("Todo fetching", () => {
       fixture: "todos.json",
     });
 
-    // The page should contain an li with the title from todo 1 (delectus aut autem)
-    cy.get("li").contains("delectus aut autem");
+    // The page should contain a label with the title from todo 1 (delectus aut autem)
+    cy.get("label").contains("delectus aut autem");
+  });
+});
   });
 });
 
