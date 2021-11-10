@@ -1,29 +1,102 @@
-# Next.js + Tailwind CSS Example
 
-This example shows how to use [Tailwind CSS](https://tailwindcss.com/) [(v2.2)](https://blog.tailwindcss.com/tailwindcss-2-2) with Next.js. It follows the steps outlined in the official [Tailwind docs](https://tailwindcss.com/docs/guides/nextjs).
+# Multi User Todo
 
-It uses the new [`Just-in-Time Mode`](https://tailwindcss.com/docs/just-in-time-mode) for Tailwind CSS.
+Esse é um projeto criado para a avaliação técnica de Igor Bedesqui.
+## Rode_localmente
 
-## Preview
+Certifique-se de ter uma versão LTS de NodeJS instalada. 
 
-Preview the example live on [StackBlitz](http://stackblitz.com/):
-
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/vercel/next.js/tree/canary/examples/with-tailwindcss)
-
-## Deploy your own
-
-Deploy the example using [Vercel](https://vercel.com?utm_source=github&utm_medium=readme&utm_campaign=next-example):
-
-[![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/git/external?repository-url=https://github.com/vercel/next.js/tree/canary/examples/with-tailwindcss&project-name=with-tailwindcss&repository-name=with-tailwindcss)
-
-## How to use
-
-Execute [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app) with [npm](https://docs.npmjs.com/cli/init) or [Yarn](https://yarnpkg.com/lang/en/docs/cli/create/) to bootstrap the example:
+Clone o projeto
 
 ```bash
-npx create-next-app --example with-tailwindcss with-tailwindcss-app
-# or
-yarn create next-app --example with-tailwindcss with-tailwindcss-app
+  git clone https://github.com/bdsqqq/multi-user-todo
 ```
 
-Deploy it to the cloud with [Vercel](https://vercel.com/new?utm_source=github&utm_medium=readme&utm_campaign=next-example) ([Documentation](https://nextjs.org/docs/deployment)).
+Navegue até o diretório do projeto
+```bash
+  cd multi-user-todo
+```
+
+Instale as dependencias
+```bash
+  yarn install
+```
+
+Inicie o ambiente local
+```bash
+  yarn dev
+```
+
+
+OBS:
+O projeto foi desenvolvido utilizando yarn, é possivel rodar todos os comandos utilizando `npm run` mas não posso garantir que todas as dependencias serão linkadas corretamente durante a instalação já que não existe package.lock no projeto. Caso encontre algum problema rodando com npm, por favor, tente com yarn.
+
+
+## Build_de_produção
+
+Crie uma build de produção
+```bash
+  yarn build
+```
+
+Execute a build localmente
+```bash
+  yarn start
+```
+
+
+## Rodando_testes
+
+Para testar a aplicação com Cypress, precisamos que um servidor local já esteja rodando. Veja [Rode localmente](#Rode_localmente) ou [Build de produção](Build_de_produção).
+
+Abre a suite de testes em uma interface. Clique em "Run 2 integration specs" para rodar todos os testes.
+```bash
+  yarn cypress
+```
+
+Executa os testes no console e cria replays da navegação.
+```bash
+  yarn cypress:headless
+```
+
+Alternativamente você pode usar os seguintes comandos para rodar ambos o servidor da aplicação e o servidor testes em apenas um terminal. **É necessário criar uma build de produção**, veja [Build de produção](Build_de_produção).
+
+Abre a suite de testes em uma interface. Clique em "Run 2 integration specs" para rodar todos os testes.
+```bash
+  yarn e2e
+```
+
+Executa os testes no console e cria replays da navegação.
+```bash
+  yarn e2e:headless
+```
+
+## Tech Stack
+
+- React
+- NextJS
+- Typescript
+- TailwindCSS
+- RadixUI colors
+- SWR
+## Desenvolvimento
+Durante o desenvolvimento criei um roadmap simplificado listando todas as features que necessárias e descrevendo-as. Além disso, usei conventional commits para o versionamento do projeto. Caso queira checar meu roadmap, veja os commits, eles são um reflexo quase perfeito do que havia planejado.
+## O Desafio
+Nós queremos entender como é o processo de desenvolvimento de software para você. Sinta-se livre para usar o que considera como boas práticas em desenvolvimento de software.
+
+Consumir API:
+1- Utilizar a API https://jsonplaceholder.typicode.com/ para criar um TODO list.
+
+2 - A página inicial do TODO deve mostrar todos os usuários.
+
+3 - Ao clicar no usuário o site deve levar para uma página que lista os TODO (tarefas) do usuário em questão.
+
+4 - Deve ser possível adicionar um novo item no TODO list de um usuário específico; bem como marcar uma tarefa como concluída ou pendente.
+
+Iremos avaliar a execução do seu código. Para isso crie um README com instruções para subir/executar a sua aplicação e comentários que avaliar pertinente sobre a execução.
+
+ 
+
+Obs1.: por se tratar de uma fake API, nenhum dado será registrado, a API apenas irá simular uma resposta, avaliando se a requisição foi correta ou não.
+
+Obs2.: É necessário subir seu desafio em um repositório privado no github e me envie o link. (Essa observação foi esclarecida por whatsapp e o repositório deve ser público)
