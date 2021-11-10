@@ -46,9 +46,6 @@ export default function Home() {
         <title>Multi User Todo</title>
       </Head>
       <div>
-        <header>
-          <nav></nav>
-        </header>
         <main>
           {error && <div>The api threw this error: {error}</div>}
 
