@@ -26,7 +26,7 @@ export default function Home() {
   // Since we're not sending the todos we create to the API, we need to create a copy of the data to use and modify so swr doesn't override it trying to revalidate from the server. see the comment at addTodo(), if we were implementing the method of mutating+requesting described there, this section would be unnecessary.
   const [todos, setTodos] = useState([]);
   const getTodosFromAPI = useCallback((newTodos) => {
-    setTodos([...newTodos]);
+    setTodos((prev) => [...prev, ...newTodos]);
   }, []);
   useEffect(() => {
     if (data && data.length > 0) getTodosFromAPI(data);
@@ -58,7 +58,7 @@ export default function Home() {
   const addTodo = (title: string) => {
     let newTodo: todoInterface = {
       title: title,
-      // id starts from 1 in the api, so we need to +1 to length
+      // id starts from 1 in the api, so we need to +1 to length. Ideally we would use something like a uuid
       id: todos.length + 1,
       completed: false,
       userId: parseInt(userId as string),
