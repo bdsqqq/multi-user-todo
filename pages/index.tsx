@@ -3,37 +3,14 @@ import useSWR from "swr";
 import { fetcher } from "@/lib/fetcher";
 import Head from "next/head";
 import Link from "next/link";
-
-interface user {
-  id: number;
-  name: string;
-  username: string;
-  email: string;
-  address: {
-    street: string;
-    suite: string;
-    city: string;
-    zipcode: string;
-    geo: {
-      lat: string;
-      lng: string;
-    };
-  };
-  phone: string;
-  website: string;
-  company: {
-    name: string;
-    catchPhrase: string;
-    bs: string;
-  };
-}
+import { user as userInterface } from "@/lib/types";
 
 export default function Home() {
   const {
     data: users,
     error,
   }: {
-    data?: user[];
+    data?: userInterface[];
     error?: any;
   } = useSWR("https://jsonplaceholder.typicode.com/users", fetcher);
 
