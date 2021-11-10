@@ -50,6 +50,8 @@ export default function Home() {
           <nav></nav>
         </header>
         <main>
+          {error && <div>The api threw this error: {error}</div>}
+
           <ul>
             {users &&
               users.map((user, i) => <li key={user.id}>{user.name}</li>)}
