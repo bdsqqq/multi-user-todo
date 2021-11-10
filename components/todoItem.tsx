@@ -10,9 +10,9 @@ const TodoItem = ({ todo }: { todo: todoInterface }) => {
   };
 
   return (
-    <div className="flex items-center gap-1">
+    <div className="flex items-center gap-2 px-2 hover:bg-mauve4 focus-within:bg-mauve5 transition-colors">
       <Checkbox
-        className={`w-4 h-4 rounded-sm border text-crimson1 transition-colors
+        className={`w-5 h-5 rounded-sm border text-crimson1 transition-colors
         ${
           checked ? "bg-crimson9 border-transparent" : "bg-mauve3 border-mauve6"
         }`}
@@ -24,7 +24,9 @@ const TodoItem = ({ todo }: { todo: todoInterface }) => {
           <CheckboxSvg />
         </CheckboxIndicator>
       </Checkbox>
-      <label htmlFor={`todo-${todo.id}`}>{todo.title}</label>
+      <label className="w-full h-full py-3" htmlFor={`todo-${todo.id}`}>
+        {todo.title}
+      </label>
     </div>
   );
 };
@@ -34,8 +36,8 @@ export { TodoItem };
 // If this was a bigger application I would probably import this from a lib like https://icons.modulz.app/
 const CheckboxSvg = () => (
   <svg
-    width="15"
-    height="15"
+    width="100%"
+    height="100%"
     viewBox="0 0 15 15"
     fill="none"
     xmlns="http://www.w3.org/2000/svg"

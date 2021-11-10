@@ -24,29 +24,30 @@ export default function Home() {
       <Head>
         <title>Multi User Todo</title>
       </Head>
-      <div className="min-h-screen bg-mauve1">
-        <main className="p-4 md:p-8">
-          <h1 className="text-4xl font-bold mb-8">
-            Click on a user to see their todo items
-          </h1>
-          {error && <div>The api threw this error: {error}</div>}
+      <main className="p-4 md:p-8">
+        <h1 className="text-4xl font-bold mb-8">
+          Click on a user to see their todo items
+        </h1>
+        {error && <div>The api threw this error: {error}</div>}
 
-          <ul className="">
-            {users &&
-              users.map((user, i) => (
-                <Link key={`user-${user.id}`} href={`user/${user.id}`} passHref>
-                  <a
-                    className={`block p-2 border border-t-0 first-of-type:border-t border-mauve6 hover:bg-mauve4 hover:border-mauve7 transition-colors ${
-                      (i + 1) % 2 == 0 ? "bg-mauve3" : "bg-mauve2"
-                    }`}
-                  >
-                    <li key={user.id}>{user.name}</li>
-                  </a>
-                </Link>
-              ))}
-          </ul>
-        </main>
-      </div>
+        <ul className="">
+          {users &&
+            users.map((user, i) => (
+              <Link key={`user-${user.id}`} href={`user/${user.id}`} passHref>
+                <a
+                  className={`block p-2 border border-t-0 first-of-type:border-t border-mauve6 hover:bg-mauve4 hover:border-mauve7 transition-colors hover:text-crimson10 ${
+                    (i + 1) % 2 == 0 ? "bg-mauve3" : "bg-mauve2"
+                  }`}
+                >
+                  <li key={user.id}>
+                    {user.name}{" "}
+                    <span className="text-mauve11">- @{user.username}</span>
+                  </li>
+                </a>
+              </Link>
+            ))}
+        </ul>
+      </main>
     </>
   );
 }

@@ -68,22 +68,35 @@ export default function Home() {
   return (
     <>
       <Head>
-        <title>user {userId}'s Todo</title>
+        <title>user {userId}'s Todos</title>
       </Head>
-      <header>
+      <header className="sticky top-0 p-4 bg-mauve3 border-b border-mauve5">
         <nav>
           <Link href="/" passHref>
-            <a>Back home</a>
+            <a className="hover:text-crimson9 focus:ring-0 focus:text-crimson10 transition-colors">
+              Back home
+            </a>
           </Link>
         </nav>
       </header>
-      <main>
-        <ul>
+      <main className="p-4 md:p-8 max-w-2xl mx-auto">
+        <ul className="">
           {todos &&
-            todos.map((todo, i) => <TodoItem key={todo.id} todo={todo} />)}
+            todos.map((todo, i) => (
+              <li>
+                <TodoItem key={todo.id} todo={todo} />{" "}
+                {i < todos.length - 1 && (
+                  <hr className="border-t border-mauve6" />
+                )}
+              </li>
+            ))}
         </ul>
-        <form onSubmit={handleSubmit}>
+        <form
+          className="flex flex-row-reverse p-2 gap-2"
+          onSubmit={handleSubmit}
+        >
           <input
+            className="w-full py-1 px-2 border-b-2 border-mauve7 focus:ring-0 focus:border-crimson10 transition-colors"
             required
             id="todoInput"
             name="todoInput"
@@ -92,7 +105,12 @@ export default function Home() {
             onChange={handleInputChange}
             type="text"
           />
-          <button type="submit">Add</button>
+          <button
+            className="bg-crimson9 text-crimson1 px-2 py-1 rounded-sm hover:bg-crimson10 focus:bg-crimson10 active:bg-crimson10 transition-colors"
+            type="submit"
+          >
+            Add
+          </button>
         </form>
       </main>
     </>
