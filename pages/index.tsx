@@ -1,4 +1,3 @@
-import { useEffect } from "react";
 import useSWR from "swr";
 import { fetcher } from "@/lib/fetcher";
 import Head from "next/head";
@@ -13,11 +12,6 @@ export default function Home() {
     data?: userInterface[];
     error?: any;
   } = useSWR("https://jsonplaceholder.typicode.com/users", fetcher);
-
-  useEffect(() => {
-    if (users) console.log({ users });
-    if (error) console.log({ error });
-  }, [users, error]);
 
   return (
     <>

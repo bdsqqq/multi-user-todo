@@ -32,12 +32,6 @@ export default function Home() {
     if (data && data.length > 0) getTodosFromAPI(data);
   }, [data]);
 
-  useEffect(() => {
-    if (userId) console.log({ userId });
-    if (todos) console.log({ todos });
-    if (error) console.log({ error });
-  }, [todos, error, userId]);
-
   const [inputValue, setInputValue] = useState("");
 
   // I'd reach for a form lib if we needed something more complex.
