@@ -20,14 +20,15 @@
     "jsx": "preserve",
     "baseUrl": ".",
     "paths": {
-      "@/components/*": ["components/*"]
+      "@/components/*": ["components/*"],
+      "@/lib/*": ["lib/*"]
     }
   },
   "include": [
     "next-env.d.ts",
     "**/*.ts",
     "**/*.tsx"
-  ],
+, "lib/fetcher.js"  ],
   "exclude": [
     "node_modules"
   ]
