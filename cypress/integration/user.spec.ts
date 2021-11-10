@@ -9,7 +9,7 @@ describe("Add todo", () => {
     cy.get("#todoInput").type("Hello, world");
 
     // find the submit button and click it
-    cy.get("button").contains("Add").click();
+    cy.get("#submitButton").click();
 
     // the page should contain a label with "Hello, world"
     cy.get("label").contains("Hello, world");
