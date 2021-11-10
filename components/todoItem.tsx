@@ -10,8 +10,12 @@ const TodoItem = ({ todo }: { todo: todoInterface }) => {
   };
 
   return (
-    <div>
+    <div className="flex items-center gap-1">
       <Checkbox
+        className={`w-4 h-4 rounded-sm border text-crimson1 transition-colors
+        ${
+          checked ? "bg-crimson9 border-transparent" : "bg-mauve3 border-mauve6"
+        }`}
         checked={checked}
         onCheckedChange={handleCheckChange}
         id={`todo-${todo.id}`}
