@@ -1,0 +1,9 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  *:focus {
+    @apply outline-none ring-2 ring-crimson10 ring-offset-1 ring-offset-mauve1;
+  }
+}
