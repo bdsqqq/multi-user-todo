@@ -25,7 +25,7 @@ export default function Home() {
         </header>
         <main>
           <ul>
-            {users.length > 0 &&
+            {users &&
               users.map((user, i) => <li key={user.id}>{user.name}</li>)}
           </ul>
         </main>
