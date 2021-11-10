@@ -2,6 +2,8 @@ import { useEffect } from "react";
 import useSWR from "swr";
 import { fetcher } from "@/lib/fetcher";
 import Head from "next/head";
+import Link from "next/link";
+
 interface user {
   id: number;
   name: string;
@@ -51,7 +53,13 @@ export default function Home() {
 
           <ul>
             {users &&
-              users.map((user, i) => <li key={user.id}>{user.name}</li>)}
+              users.map((user, i) => (
+                <Link href={`user/${user.id}`} passHref>
+                  <a>
+                    <li key={user.id}>{user.name}</li>
+                  </a>
+                </Link>
+              ))}
           </ul>
         </main>
       </div>
