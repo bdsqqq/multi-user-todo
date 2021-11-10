@@ -35,7 +35,7 @@ export default function Home() {
             users.map((user, i) => (
               <Link key={`user-${user.id}`} href={`user/${user.id}`} passHref>
                 <a
-                  className={`block p-2 border border-t-0 first-of-type:border-t border-mauve6 hover:bg-mauve4 hover:border-mauve7 transition-colors hover:text-crimson10 ${
+                  className={`block relative p-2 border border-t-0 first-of-type:border-t border-mauve6 hover:bg-mauve4 hover:border-mauve7 transition-colors focus:z-10 hover:text-crimson10 ${
                     (i + 1) % 2 == 0 ? "bg-mauve3" : "bg-mauve2"
                   }`}
                 >
