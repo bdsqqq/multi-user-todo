@@ -77,7 +77,7 @@ export default function Home() {
       <header className="sticky top-0 p-4 bg-mauve3 border-b border-mauve5">
         <nav>
           <Link href="/" passHref>
-            <a className="hover:text-crimson9 focus:ring-0 focus:text-crimson10 transition-colors">
+            <a className="hover:text-crimson9 focus:ring-0 focus:ring-offset-0 focus:text-crimson10 transition-colors">
               Back home
             </a>
           </Link>
