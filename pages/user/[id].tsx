@@ -1,5 +1,5 @@
-import { useEffect, useState } from "react";
-import useSWR, { useSWRConfig } from "swr";
+import { useCallback, useEffect, useState } from "react";
+import useSWR from "swr";
 import { fetcher } from "@/lib/fetcher";
 import Head from "next/head";
 import Link from "next/link";
@@ -12,9 +12,8 @@ export default function Home() {
   const router = useRouter();
   const { id: userId } = router.query;
 
-  const { mutate } = useSWRConfig();
   const {
-    data: todos,
+    data,
     error,
   }: {
     data?: todoInterface[];
@@ -23,6 +22,15 @@ export default function Home() {
     `https://jsonplaceholder.typicode.com/users/${userId}/todos`,
     fetcher
   );
+
+  // Since we're not sending the todos we create to the API, we need to create a copy of the data to use and modify so swr doesn't override it trying to revalidate from the server. see the comment at addTodo(), if we were implementing the method of mutating+requesting described there, this section would be unnecessary.
+  const [todos, setTodos] = useState([]);
+  const getTodosFromAPI = useCallback((newTodos) => {
+    setTodos([...newTodos]);
+  }, []);
+  useEffect(() => {
+    if (data && data.length > 0) getTodosFromAPI(data);
+  }, [data]);
 
   useEffect(() => {
     if (userId) console.log({ userId });
@@ -57,12 +65,8 @@ export default function Home() {
     };
     let tempTodos = [...todos, newTodo];
 
-    // We're not updating the backend but this could also be used if we were. I'm mutating the data locally and the "false" as the third argument makes swr stop trying to revalidate the data from the source. If we wanted to update the data on the backend we would send a POST request after this and call revalidate again. see: https://swr.vercel.app/docs/mutation#mutation-and-post-request
-    mutate(
-      `https://jsonplaceholder.typicode.com/users/${userId}/todos`,
-      tempTodos,
-      false
-    );
+    // We're not updating the backend if we were we could use mutate() directly on the data object instead of having a separate state. by the data locally and passing "false" as the third argument swr would stop trying to revalidate the data from the source. If we wanted to update the data on the backend we would send a POST request after the mutate() and call revalidate again. see: https://swr.vercel.app/docs/mutation#mutation-and-post-request
+    setTodos(tempTodos);
   };
 
   return (
