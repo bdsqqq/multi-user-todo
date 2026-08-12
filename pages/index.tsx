@@ -27,17 +27,17 @@ export default function Home() {
         <ul className="">
           {users &&
             users.map((user, i) => (
-              <Link key={`user-${user.id}`} href={`user/${user.id}`} passHref>
-                <a
-                  className={`block relative p-2 border border-t-0 first-of-type:border-t border-mauve6 hover:bg-mauve4 hover:border-mauve7 transition-colors focus:z-10 hover:text-crimson10 ${
-                    (i + 1) % 2 == 0 ? "bg-mauve3" : "bg-mauve2"
-                  }`}
-                >
-                  <li key={user.id}>
-                    {user.name}{" "}
-                    <span className="text-mauve11">- @{user.username}</span>
-                  </li>
-                </a>
+              <Link
+                key={`user-${user.id}`}
+                href={`user/${user.id}`}
+                className={`block relative p-2 border border-t-0 first-of-type:border-t border-mauve6 hover:bg-mauve4 hover:border-mauve7 transition-colors focus:z-10 hover:text-crimson10 ${
+                  (i + 1) % 2 == 0 ? "bg-mauve3" : "bg-mauve2"
+                }`}
+              >
+                <li>
+                  {user.name}{" "}
+                  <span className="text-mauve11">- @{user.username}</span>
+                </li>
               </Link>
             ))}
         </ul>

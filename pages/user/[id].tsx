@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useState } from "react";
+import { useState } from "react";
 import useSWR from "swr";
 import { fetcher } from "@/lib/fetcher";
 import Head from "next/head";
@@ -23,14 +23,9 @@ export default function Home() {
     fetcher
   );
 
-  // Since we're not sending the todos we create to the API, we need to create a copy of the data to use and modify so swr doesn't override it trying to revalidate from the server. see the comment at addTodo(), if we were implementing the method of mutating+requesting described there, this section would be unnecessary.
-  const [todos, setTodos] = useState([]);
-  const getTodosFromAPI = useCallback((newTodos) => {
-    setTodos((prev) => [...prev, ...newTodos]);
-  }, []);
-  useEffect(() => {
-    if (data && data.length > 0) getTodosFromAPI(data);
-  }, [data]);
+  // Keep locally created todos separate so SWR revalidation cannot overwrite them.
+  const [addedTodos, setAddedTodos] = useState<todoInterface[]>([]);
+  const todos = [...(data ?? []), ...addedTodos];
 
   const [inputValue, setInputValue] = useState("");
 
@@ -57,23 +52,21 @@ export default function Home() {
       completed: false,
       userId: parseInt(userId as string),
     };
-    let tempTodos = [...todos, newTodo];
-
-    // We're not updating the backend if we were we could use mutate() directly on the data object instead of having a separate state. by the data locally and passing "false" as the third argument swr would stop trying to revalidate the data from the source. If we wanted to update the data on the backend we would send a POST request after the mutate() and call revalidate again. see: https://swr.vercel.app/docs/mutation#mutation-and-post-request
-    setTodos(tempTodos);
+    setAddedTodos((currentTodos) => [...currentTodos, newTodo]);
   };
 
   return (
     <>
       <Head>
-        <title>user {userId}'s Todos</title>
+        <title>{`user ${userId}'s Todos`}</title>
       </Head>
       <header className="sticky top-0 p-4 bg-mauve3 border-b border-mauve5">
         <nav>
-          <Link href="/" passHref>
-            <a className="hover:text-crimson9 focus:ring-0 focus:ring-offset-0 focus:text-crimson10 transition-colors">
-              Back home
-            </a>
+          <Link
+            href="/"
+            className="hover:text-crimson9 focus:ring-0 focus:ring-offset-0 focus:text-crimson10 transition-colors"
+          >
+            Back home
           </Link>
         </nav>
       </header>
@@ -82,8 +75,8 @@ export default function Home() {
         <ul className="">
           {todos &&
             todos.map((todo, i) => (
-              <li>
-                <TodoItem key={todo.id} todo={todo} />{" "}
+              <li key={todo.id}>
+                <TodoItem todo={todo} />{" "}
                 {i < todos.length - 1 && (
                   <hr className="border-t border-mauve6" />
                 )}
