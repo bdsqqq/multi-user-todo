@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "target": "ES2017",
     "lib": [
       "dom",
       "dom.iterable",
@@ -14,21 +14,25 @@
     "incremental": true,
     "esModuleInterop": true,
     "module": "esnext",
-    "moduleResolution": "node",
+    "moduleResolution": "bundler",
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "jsx": "preserve",
-    "baseUrl": ".",
+    "jsx": "react-jsx",
     "paths": {
-      "@/components/*": ["components/*"],
-      "@/lib/*": ["lib/*"]
+      "@/components/*": [
+        "./components/*"
+      ],
+      "@/lib/*": [
+        "./lib/*"
+      ]
     }
   },
   "include": [
     "next-env.d.ts",
     "**/*.ts",
-    "**/*.tsx"
-, "lib/fetcher.js"  ],
+    "**/*.tsx",
+    "lib/fetcher.js"
+  ],
   "exclude": [
     "node_modules"
   ]
